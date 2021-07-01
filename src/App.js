@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Vehicles from './views/ShowVehiclesPage';
+import UploadFile from './views/UploadFilePage';
+import './css/bootstrap.min.css';
 
-class App extends Component {
-  render() {
+const App = () => {
+    const [getState, setState] = useState({
+        vehicles: []
+    });
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        getState.vehicles.length
+            ? <Vehicles vehicles={getState.vehicles}/>
+            : <UploadFile setState={setState}/>
     );
-  }
 }
 
 export default App;
